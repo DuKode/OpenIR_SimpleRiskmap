@@ -1,5 +1,19 @@
 #!/bin/bash
 
+#generate the color plates:
+
+convert -size 8776x7612 xc:"#ff9d9d" red1.png
+convert -size 8776x7612 xc:"#ff4e4e" red2.png
+convert -size 8776x7612 xc:"#d80000" red3.png
+convert -size 8776x7612 xc:"#890000" red4.png
+
+
+
+#convert tiff to png (to allow work with alpha channel)
+convert veg.tif veg.png
+convert urb.tif urb.png
+
+
 #1- isolate the veg, and urb
 
 convert urb.png -matte \( +clone -fuzz 15% -transparent "#b04e9a" \) -compose DstOut -composite urb_iso.png
